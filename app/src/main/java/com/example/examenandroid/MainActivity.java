@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.ImageView;
 
+import com.example.examenandroid.Globales.GlobalController;
+import com.example.examenandroid.Interfaces.IverDetalles;
 import com.example.examenandroid.Model.MovieModelClass;
 import com.example.examenandroid.Model.MovieModelClassDS;
 import com.example.examenandroid.Utils.Utils;
@@ -20,13 +24,14 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IverDetalles {
 
     //Link de API peliculas populares
     private static String JSON_URL = "https://api.themoviedb.org/3/movie/popular?api_key=7abda88ea13e3fb5e0151f00800b753d";
@@ -34,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     List<MovieModelClass> movieList = new ArrayList<>();
     ImageView imgCabezal;
     private static String ultima_sincronizacion;
-
+    IverDetalles iverDetalle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private void iniComponent() {
         peliculasPopulares = findViewById(R.id.ls_peliculasPopulares);
         imgCabezal = findViewById(R.id.img_cabezal);
+        iverDetalle=this;
     }
 
     private void EventComponent() {
@@ -57,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
     public class GetData extends AsyncTask<String, String, String> {
 
@@ -108,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     model.setPeliculaId(jsonObject1.getString("id"));
                     model.setPeliculaNom(jsonObject1.getString("original_title"));
                     model.setPeliculaImg(jsonObject1.getString("poster_path"));
+                    model.setPeliculaDesc(jsonObject1.getString("overview"));
                     movieList.add(model);
                     MovieModelClassDS movi = new MovieModelClassDS();
                     movi.createPelicula(model);
@@ -130,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             MovieModelClassDS movi = new MovieModelClassDS();
             listMovieInt = movi.getAllMoviesBase();
         }
-        AdapterMovie adapterMovie = new AdapterMovie(this, listMovieInt);
+        AdapterMovie adapterMovie = new AdapterMovie(this, listMovieInt,iverDetalle);
         peliculasPopulares.setLayoutManager(new LinearLayoutManager(this));
         peliculasPopulares.setAdapter(adapterMovie);
     }
@@ -146,4 +155,17 @@ public class MainActivity extends AppCompatActivity {
     public static void truncate() {
         ultima_sincronizacion = null;
     }
+
+
+    protected void goToDetalles(MovieModelClass moviesSeleccionada) {
+        GlobalController.setMovieElegida(moviesSeleccionada);
+        Intent intent = new Intent(this,
+                ControllerDetallePelicula.class);
+        startActivity(intent);
+    }
+    @Override
+    public void IrVerDetalles(MovieModelClass mov) {
+        goToDetalles(mov);
+    }
+
 }

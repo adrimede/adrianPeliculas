@@ -1,29 +1,40 @@
 package com.example.examenandroid.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.examenandroid.ControllerDetallePelicula;
+import com.example.examenandroid.Interfaces.IverDetalles;
+import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.Model.MovieModelClass;
 import com.example.examenandroid.Model.MovieModelClassDS;
 import com.example.examenandroid.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder> {
     private Context mContext;
-    private List<MovieModelClass> mListMovie;
+     static List<MovieModelClass> mListMovie;
+    static IverDetalles iverDetalle;
+    static MovieModelClass movieModel;
 
-    public AdapterMovie(Context mContext, List<MovieModelClass> mListMovie) {
+    public AdapterMovie(Context mContext, List<MovieModelClass> mListMovie, IverDetalles iverDetalle) {
         this.mContext = mContext;
         this.mListMovie = mListMovie;
+        this.iverDetalle = iverDetalle;
     }
 
     @NonNull
@@ -37,17 +48,15 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        MovieModelClass movieModel=mListMovie.get(position);
+        movieModel = mListMovie.get(position);
 
-       holder.id.setText(movieModel.getPeliculaId());
-       holder.name.setText(movieModel.getPeliculaNom());
-
+        holder.id.setText(movieModel.getPeliculaId());
+        holder.name.setText(movieModel.getPeliculaNom());
         //Libreria para mostrar la imagen
         Glide.with(mContext)
                 .load(movieModel.getPeliculaImg())
                 .error(R.mipmap.not_found_144)
                 .into(holder.img);
-
     }
 
 
@@ -56,16 +65,30 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder
         return mListMovie.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder  {
         TextView id;
         TextView name;
         ImageView img;
+        RelativeLayout rl_itemMovie;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             id = itemView.findViewById(R.id.txt_Id);
             name = itemView.findViewById(R.id.txt_nombre);
             img = itemView.findViewById(R.id.img_movie);
+            rl_itemMovie = itemView.findViewById(R.id.rl_itemMovie);
+            rl_itemMovie.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    MovieModelClass movieBundle = mListMovie.get(getAdapterPosition());
+                    iverDetalle.IrVerDetalles(movieBundle);
+                }
+
+        });
+
         }
     }
+
+
 }
