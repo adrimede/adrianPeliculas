@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ExamenAndroid</string>
     <string name="movie_clase">claseMovie</string>
+    <string name="tituloPeliuclas">Peliculas mas populares</string>
 </resources>

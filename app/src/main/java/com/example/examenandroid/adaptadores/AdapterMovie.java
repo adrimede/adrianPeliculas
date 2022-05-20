@@ -1,9 +1,7 @@
 package com.example.examenandroid.adaptadores;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.examenandroid.ControllerDetallePelicula;
 import com.example.examenandroid.Interfaces.IverDetalles;
-import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.Model.MovieModelClass;
-import com.example.examenandroid.Model.MovieModelClassDS;
 import com.example.examenandroid.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder> {

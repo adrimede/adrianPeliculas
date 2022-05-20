@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenAndroid">
+        <activity android:name=".Controllador.ControllerDetallePelicula" android:screenOrientation="portrait" android:hardwareAccelerated="false"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

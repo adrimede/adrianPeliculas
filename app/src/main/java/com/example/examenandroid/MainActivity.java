@@ -1,5 +1,6 @@
 package com.example.examenandroid;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.widget.ImageView;
 
+import com.example.examenandroid.Controllador.ControllerDetallePelicula;
 import com.example.examenandroid.Globales.GlobalController;
 import com.example.examenandroid.Interfaces.IverDetalles;
 import com.example.examenandroid.Model.MovieModelClass;
@@ -24,7 +25,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -162,10 +162,19 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
         Intent intent = new Intent(this,
                 ControllerDetallePelicula.class);
         startActivity(intent);
+
     }
     @Override
     public void IrVerDetalles(MovieModelClass mov) {
         goToDetalles(mov);
     }
+    //Pongo titulo a la vista
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        ActionBar actionBar = this.getSupportActionBar();
+        actionBar.setTitle(R.string.tituloPeliuclas);
+        actionBar.
+    }
 }

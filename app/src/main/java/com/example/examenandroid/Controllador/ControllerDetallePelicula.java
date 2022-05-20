@@ -1,13 +1,18 @@
-package com.example.examenandroid;
+package com.example.examenandroid.Controllador;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.examenandroid.Globales.GlobalController;
+import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.Model.MovieModelClass;
+import com.example.examenandroid.R;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 public class ControllerDetallePelicula extends MainActivity {
 
@@ -37,11 +42,15 @@ public class ControllerDetallePelicula extends MainActivity {
     private void eventComponent() {
         moviePel= GlobalController.getMovieElegida();
         //Libreria para mostrar la imagen
-        Glide.with(context)
-                .load(moviePel.getPeliculaImg())
-                .error(R.mipmap.not_found_144)
-                .into(imgCabezal);
-
+//        Glide.with(context)
+//                .load(moviePel.getPeliculaImg())
+//                .error(R.mipmap.not_found_144)
+//                .into(imgCabezal);
+     //   String URl="https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2019%2F10%2F19%2F11%2F32%2Ffungus-4561194__340.jpg&imgrefurl=https%3A%2F%2Fpixabay.com%2Fes%2Fphotos%2Fsearch%2Fcinem%25C3%25A1ticas%2F&tbnid=dB_kdYk2OlwiAM&vet=12ahUKEwi8qee1ze73AhU_s5UCHcl9B00QMygGegUIARDHAQ..i&docid=d0iZ9q9yxm-GoM&w=226&h=340&itg=1&q=fotos%20cinematicas&ved=2ahUKEwi8qee1ze73AhU_s5UCHcl9B00QMygGegUIARDHAQ";
+        Uri uri= Uri.parse("https://api.themoviedb.org"+moviePel.getPeliculaImg());
+        Picasso.get()
+                .load(R.drawable.cabezal_movie)
+                .fit().into(imgCabezal);
         peliculaNomb.setText(moviePel.getPeliculaNom());
         peliculaDesc.setText(moviePel.getPeliculaDesc());
 
