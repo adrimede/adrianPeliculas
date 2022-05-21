@@ -2,9 +2,13 @@ package com.example.examenandroid;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -15,20 +19,17 @@ import com.example.examenandroid.Controllador.ControllerPrincipal;
 import com.example.examenandroid.Globales.GlobalController;
 import com.example.examenandroid.Interfaces.IverDetalles;
 import com.example.examenandroid.Model.MovieModelClass;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements IverDetalles {
 
     //Link de API peliculas populares
     public static String JSON_URL = "https://api.themoviedb.org/3/movie/popular?api_key=7abda88ea13e3fb5e0151f00800b753d";
-    RecyclerView peliculasPopulares;
-    List<MovieModelClass> movieList = new ArrayList<>();
-    ImageView imgCabezal;
     private static String ultima_sincronizacion;
-    IverDetalles iverDetalle;
-   // private FirebaseFirestore db=new FirebaseFirestore();
+    //  FirebaseApp.initializeApp();
+    public static FirebaseFirestore mfirestore=FirebaseFirestore.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
     }
 
     private void EventComponent() {
-
+        accesoAUbicacion();
     }
 
     public static String getUltima_Sincroizacion() {
@@ -83,6 +84,15 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
         startActivity(intent);
 
     }
+//    //LLeva al controlador correspondiente
+//    protected void goToGeolocalizacion() {
+//        Intent intent = new Intent(this,
+//                ControllerMapsActivity.class);
+//        startActivity(intent);
+//
+//    }
+
+
     @Override
     public void IrVerDetalles(MovieModelClass mov) {
         goToDetalles(mov);
@@ -100,5 +110,16 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
     public void toast(String msj){
         Toast.makeText(this,msj,Toast.LENGTH_LONG).show();
 
+    }
+
+    private void accesoAUbicacion() {
+        int permiso = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (permiso == PackageManager.PERMISSION_DENIED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }
+        }
     }
 }

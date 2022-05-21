@@ -1,3 +1,5 @@
+package com.example.examenandroid.Controllador;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
