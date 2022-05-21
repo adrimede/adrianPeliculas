@@ -2,8 +2,12 @@ package com.example.examenandroid.Controllador;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -156,7 +160,32 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_principal,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_Home:
+                goToPrincipal();
+                return true;
+
+            case R.id.menu_Peliculas:
+                goToPeliculasPopulares();
+                return true;
+
+            case R.id.Firestore:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 
     @Override
     public void IrVerDetalles(MovieModelClass mov) {

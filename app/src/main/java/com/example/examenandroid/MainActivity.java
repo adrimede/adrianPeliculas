@@ -1,5 +1,6 @@
 package com.example.examenandroid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +10,9 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -71,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
             Toast.makeText(this,"Error al crear la Base de datos",Toast.LENGTH_LONG).show();
         }
     }
+
+
+
 
 
 
