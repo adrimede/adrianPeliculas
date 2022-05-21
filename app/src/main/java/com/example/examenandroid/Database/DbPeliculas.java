@@ -48,15 +48,16 @@ public class DbPeliculas extends _DBHelper {
         MovieModelClass peliculas = null;
         Cursor cursorPeliculas = null;
 
-        cursorPeliculas = db.rawQuery("select * from Pelicula", null);
+        cursorPeliculas = db.rawQuery("select * from "+TABLE_PELICULAS, null);
 
         if (cursorPeliculas.moveToFirst()) {
             do {
                 peliculas = new MovieModelClass();
                 peliculas.setPeliculaId(cursorPeliculas.getString(0));
-                peliculas.setPeliculaNom(cursorPeliculas.getString(1));
-                peliculas.setPeliculaImg(cursorPeliculas.getString(2));
-                peliculas.setPeliculaDesc(cursorPeliculas.getString(3));
+                peliculas.setPeliculaNumero(cursorPeliculas.getString(1));
+                peliculas.setPeliculaNom(cursorPeliculas.getString(2));
+                peliculas.setPeliculaImg(cursorPeliculas.getString(3));
+                peliculas.setPeliculaDesc(cursorPeliculas.getString(4));
                 listaPleiculas.add(peliculas);
             } while (cursorPeliculas.moveToNext());
         }

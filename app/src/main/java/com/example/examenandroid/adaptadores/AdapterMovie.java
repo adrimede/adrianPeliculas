@@ -44,7 +44,7 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         movieModel = mListMovie.get(position);
 
-        holder.id.setText(movieModel.getPeliculaId());
+        holder.id.setText(movieModel.getPeliculaNumero());
         holder.name.setText(movieModel.getPeliculaNom());
         //Libreria para mostrar la imagen
         Glide.with(mContext)

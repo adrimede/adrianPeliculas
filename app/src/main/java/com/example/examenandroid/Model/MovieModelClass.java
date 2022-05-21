@@ -2,11 +2,13 @@ package com.example.examenandroid.Model;
 
 public class MovieModelClass {
     String peliculaId;
+    String peliculaNumero;
     String peliculaNom;
     String peliculaImg;
     String peliculaDesc;
-    public MovieModelClass(String peliculaId, String name, String img,String PeliculaDesc) {
+    public MovieModelClass(String peliculaId,String peliculaNumero, String name, String img,String PeliculaDesc) {
         this.peliculaId = peliculaId;
+        this.peliculaNumero=peliculaNumero;
         this.peliculaNom = name;
         this.peliculaImg = img;
         this.peliculaDesc = PeliculaDesc;
@@ -22,6 +24,14 @@ public class MovieModelClass {
 
     public void setPeliculaId(String peliculaId) {
         this.peliculaId = peliculaId;
+    }
+
+    public String getPeliculaNumero() {
+        return peliculaNumero;
+    }
+
+    public void setPeliculaNumero(String peliculaNumero) {
+        this.peliculaNumero = peliculaNumero;
     }
 
     public String getPeliculaNom() {
