@@ -2,9 +2,13 @@ package com.example.examenandroid;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
     }
 
     private void EventComponent() {
-
+        accesoAUbicacion();
     }
 
     public static String getUltima_Sincroizacion() {
@@ -100,5 +104,16 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
     public void toast(String msj){
         Toast.makeText(this,msj,Toast.LENGTH_LONG).show();
 
+    }
+
+    private void accesoAUbicacion() {
+        int permiso = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (permiso == PackageManager.PERMISSION_DENIED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }
+        }
     }
 }

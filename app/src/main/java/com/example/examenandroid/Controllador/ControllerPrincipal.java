@@ -1,5 +1,7 @@
 package com.example.examenandroid.Controllador;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.examenandroid.Database._DBHelper;
 import com.example.examenandroid.MainActivity;
@@ -34,9 +38,9 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
 
     private void iniComponents() {
         //Botones
-        btn_Peliculas=findViewById(R.id.btn_Peliculas);
-        btn_Firebase=findViewById(R.id.btn_Firebase);
-        btn_BaseDatos=findViewById(R.id.btn_BaseDatos);
+        btn_Peliculas = findViewById(R.id.btn_Peliculas);
+        btn_Firebase = findViewById(R.id.btn_Firebase);
+        btn_BaseDatos = findViewById(R.id.btn_BaseDatos);
     }
 
     private void iniEvenet() {
@@ -44,17 +48,18 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
         btn_Firebase.setOnClickListener(this);
         btn_BaseDatos.setOnClickListener(this);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_principal,menu);
+        inflater.inflate(R.menu.menu_principal, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_Home:
                 goToPrincipal();
                 return true;
@@ -74,7 +79,7 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_Peliculas:
                 goToPeliculasPopulares();
                 break;
@@ -82,24 +87,24 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
                 generarBaseDeDatos();
                 break;
             case R.id.btn_Firebase:
-                GuardarUbicacion();
+               GuardarUbicacion();
                 break;
 
         }
     }
 
-//Ejecuciòn cada 30 segundos
-    public void GuardarUbicacion(){
+    //Ejecuciòn cada 30 segundos
+    public void GuardarUbicacion() {
 
-        final Handler handler= new Handler();
+        final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                metodoEjecutar();//llamamos nuestro metodo
-                handler.postDelayed(this,30000);//se ejecutara cada 10 segundos
+              metodoEjecutar();//llamamos nuestro metodo
+                handler.postDelayed(this, 30000);//se ejecutara cada 10 segundos
             }
 
-        },5000);//empezara a ejecutarse después de 5 milisegundos
+        }, 5000);//empezara a ejecutarse después de 5 milisegundos
 
     }
 
@@ -107,23 +112,23 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
     private void metodoEjecutar() {
 
     }
-    //Genera la abse de Datos
-    public void generarBaseDeDatos(){
-        _DBHelper dbHelper=new _DBHelper(ControllerPrincipal.this);
-        SQLiteDatabase db= dbHelper.getWritableDatabase();
-        if(db!=null){
-            Toast.makeText(this,"Base de datos creada",Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(this,"Error al crear la Base de datos",Toast.LENGTH_LONG).show();
+        //Genera la abse de Datos
+        public void generarBaseDeDatos () {
+            _DBHelper dbHelper = new _DBHelper(ControllerPrincipal.this);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            if (db != null) {
+                Toast.makeText(this, "Base de datos creada", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Error al crear la Base de datos", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        public void onResume () {
+            super.onResume();
+
+            ActionBar actionBar = this.getSupportActionBar();
+            actionBar.setTitle(R.string.tituloHome);
+
         }
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        ActionBar actionBar = this.getSupportActionBar();
-        actionBar.setTitle(R.string.tituloHome);
-
-    }
-}
