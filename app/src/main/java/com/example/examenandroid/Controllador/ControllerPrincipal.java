@@ -1,15 +1,18 @@
 package com.example.examenandroid.Controllador;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 
+import com.example.examenandroid.Database._DBHelper;
 import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.R;
 
@@ -17,6 +20,7 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
 
     Button btn_Peliculas;
     Button btn_Firebase;
+    Button btn_BaseDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +35,13 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
         //Botones
         btn_Peliculas=findViewById(R.id.btn_Peliculas);
         btn_Firebase=findViewById(R.id.btn_Firebase);
+        btn_BaseDatos=findViewById(R.id.btn_BaseDatos);
     }
 
     private void iniEvenet() {
         btn_Peliculas.setOnClickListener(this);
         btn_Firebase.setOnClickListener(this);
+        btn_BaseDatos.setOnClickListener(this);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,6 +74,16 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
         switch (v.getId()){
             case R.id.btn_Peliculas:
                 goToPeliculasPopulares();
+                break;
+            case R.id.btn_BaseDatos:
+                _DBHelper dbHelper=new _DBHelper(ControllerPrincipal.this);
+                SQLiteDatabase db= dbHelper.getWritableDatabase();
+                if(db!=null){
+
+                    Toast.makeText(this,"Base de datos creada",Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(this,"Error al crear la Base de datos",Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.btn_Firebase:
 

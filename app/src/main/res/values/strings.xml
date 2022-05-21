@@ -5,4 +5,5 @@
     <string name="tituloHome">Examen android</string>
     <string name="btn_Peliculas">Peliculas API</string>
     <string name="btn_Firestore">Firestore</string>
+    <string name="btn_BD">Crear Base de Datos</string>
 </resources>

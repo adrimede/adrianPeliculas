@@ -30,10 +30,33 @@
 
         </LinearLayout>
 
+
         <LinearLayout
+            android:id="@+id/ly_BaseDatos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ly_peliculas"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_BaseDatos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/btn_BD"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ly_BaseDatos"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -51,5 +74,6 @@
                 />
 
         </LinearLayout>
+
     </RelativeLayout>
 </RelativeLayout>

@@ -66,20 +66,8 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
     }
 
     private void EventComponent() {
-        _DBHelper dbHelper=new _DBHelper(MainActivity.this);
-        SQLiteDatabase db= dbHelper.getWritableDatabase();
-        if(db!=null){
 
-            Toast.makeText(this,"Base de datos creada",Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(this,"Error al crear la Base de datos",Toast.LENGTH_LONG).show();
-        }
     }
-
-
-
-
-
 
     public static String getUltima_Sincroizacion() {
         return ultima_sincronizacion;
@@ -128,6 +116,11 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
 
         ActionBar actionBar = this.getSupportActionBar();
         actionBar.setTitle(R.string.tituloPeliuclas);
+
+    }
+
+    public void toast(String msj){
+        Toast.makeText(this,msj,Toast.LENGTH_LONG).show();
 
     }
 }

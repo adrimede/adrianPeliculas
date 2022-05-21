@@ -3,6 +3,7 @@ package com.example.examenandroid.Utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.Toast;
 
 public class Utils {
     static Context context;
@@ -22,4 +23,6 @@ public class Utils {
         }
         return false;
     }
+
+
 }

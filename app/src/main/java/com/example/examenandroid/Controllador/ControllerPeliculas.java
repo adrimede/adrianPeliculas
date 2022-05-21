@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -41,6 +42,8 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
     List<MovieModelClass> movieList = new ArrayList<>();
     ImageView imgCabezal;
     IverDetalles iverDetalle;
+    List<MovieModelClass> listMovieBD = new ArrayList<>();
+    String estado;
     // private FirebaseFirestore db=new FirebaseFirestore();
 
     @Override
@@ -56,16 +59,13 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
     private void iniComponent() {
         peliculasPopulares = findViewById(R.id.ls_peliculasPopulares);
         imgCabezal = findViewById(R.id.img_cabezal);
-        iverDetalle=this;
+        iverDetalle = this;
     }
 
     private void EventComponent() {
         GetData getData = new GetData();
         getData.execute();
-
-
     }
-
 
 
     public class GetData extends AsyncTask<String, String, String> {
@@ -106,6 +106,7 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
             return current;
         }
 
+        //Obtengo lo que me devuelve la API
         @Override
         protected void onPostExecute(String s) {
             try {
@@ -120,8 +121,28 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
                     model.setPeliculaImg(jsonObject1.getString("poster_path"));
                     model.setPeliculaDesc(jsonObject1.getString("overview"));
                     movieList.add(model);
-                    MovieModelClassDS movi = new MovieModelClassDS();
-                    movi.createPelicula(model);
+
+                    for (MovieModelClass movi : movieList) {
+                        DbPeliculas dbPeliculas = new DbPeliculas(ControllerPeliculas.this);
+                        long id = dbPeliculas.insertarPelicula(movi.getPeliculaId(), movi.getPeliculaNom(), movi.getPeliculaImg(),
+                                movi.getPeliculaDesc());
+
+                        if (id > 0) {
+                            estado = "S";
+                        } else {
+                            estado = "N";
+                        }
+
+                    }
+                    if (estado.equals("S")) {
+                        toast("Datos Guardados");
+                    } else {
+                        toast("nO SE GAURDARON Guardados");
+                    }
+
+
+//                    MovieModelClassDS movi = new MovieModelClassDS();
+//                    movi.createPelicula(model);
                 }
 
             } catch (JSONException e) {
@@ -137,40 +158,28 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
         //Verifica si hay internet
         if (Utils.isOnlineNet()) {
             listMovieInt = movieList;
-            List<MovieModelClass> movTomado = new ArrayList<>();
-            for (MovieModelClass movi : listMovieInt) {
-
-                DbPeliculas dbPeliculas= new DbPeliculas(this);
-                dbPeliculas.insertarPelicula(movi.getPeliculaId(),movi.getPeliculaNom(),movi.getPeliculaImg(),
-                        movi.getPeliculaDesc());
-                movTomado.add(movi);
-            }
-            listMovieInt=movTomado;
         } else {
+            DbPeliculas dbPeliculas = new DbPeliculas(this);
+            listMovieInt = dbPeliculas.mostrarPeliculas();
 
-
-          //  listMovieInt=movTomado;
         }
-        AdapterMovie adapterMovie = new AdapterMovie(this, listMovieInt,iverDetalle);
+        AdapterMovie adapterMovie = new AdapterMovie(this, listMovieInt, iverDetalle);
         peliculasPopulares.setLayoutManager(new LinearLayoutManager(this));
         peliculasPopulares.setAdapter(adapterMovie);
     }
-
-
-
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_principal,menu);
+        inflater.inflate(R.menu.menu_principal, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_Home:
                 goToPrincipal();
                 return true;
@@ -191,6 +200,7 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
     public void IrVerDetalles(MovieModelClass mov) {
         goToDetalles(mov);
     }
+
     //Pongo titulo a la vista
     @Override
     public void onResume() {
