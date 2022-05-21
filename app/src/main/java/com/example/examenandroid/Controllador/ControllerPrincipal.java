@@ -148,19 +148,10 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
                             map.put("latitud",latitude);
                             map.put("longitud",longitud);
                             //   mfirestore.collection("Ubicacion").document().set(map);
-                            mfirestore.collection("Ubicacion")
-                                    .add(map)
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                        @Override
-                                        public void onSuccess(DocumentReference documentReference) {
-                                            toast("Ubicaciòn guardada");  }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            toast("No se pudo guardar la ubicacion");
-                                        }
-                                    });
+                            mfirestore.collection("Ubicacion").document().set(map);
+
+                            toast("Ubicaciòn guardada :"+latitude+" "+longitud);
+
                         }
                     }
                 });
