@@ -2,6 +2,7 @@ package com.example.examenandroid.Controllador;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -69,6 +70,8 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
 
         }
     }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -76,19 +79,42 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
                 goToPeliculasPopulares();
                 break;
             case R.id.btn_BaseDatos:
-                _DBHelper dbHelper=new _DBHelper(ControllerPrincipal.this);
-                SQLiteDatabase db= dbHelper.getWritableDatabase();
-                if(db!=null){
-
-                    Toast.makeText(this,"Base de datos creada",Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(this,"Error al crear la Base de datos",Toast.LENGTH_LONG).show();
-                }
+                generarBaseDeDatos();
                 break;
             case R.id.btn_Firebase:
-
+                GuardarUbicacion();
                 break;
 
+        }
+    }
+
+//Ejecuciòn cada 30 segundos
+    public void GuardarUbicacion(){
+
+        final Handler handler= new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                metodoEjecutar();//llamamos nuestro metodo
+                handler.postDelayed(this,30000);//se ejecutara cada 10 segundos
+            }
+
+        },5000);//empezara a ejecutarse después de 5 milisegundos
+
+    }
+
+
+    private void metodoEjecutar() {
+
+    }
+    //Genera la abse de Datos
+    public void generarBaseDeDatos(){
+        _DBHelper dbHelper=new _DBHelper(ControllerPrincipal.this);
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
+        if(db!=null){
+            Toast.makeText(this,"Base de datos creada",Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(this,"Error al crear la Base de datos",Toast.LENGTH_LONG).show();
         }
     }
 
