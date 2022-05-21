@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -18,7 +17,6 @@ import com.example.examenandroid.Database.DbPeliculas;
 import com.example.examenandroid.Interfaces.IverDetalles;
 import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.Model.MovieModelClass;
-import com.example.examenandroid.Model.MovieModelClassDS;
 import com.example.examenandroid.R;
 import com.example.examenandroid.Utils.Utils;
 import com.example.examenandroid.adaptadores.AdapterMovie;
@@ -42,7 +40,6 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
     List<MovieModelClass> movieList = new ArrayList<>();
     ImageView imgCabezal;
     IverDetalles iverDetalle;
-    List<MovieModelClass> listMovieBD = new ArrayList<>();
     String estado;
     // private FirebaseFirestore db=new FirebaseFirestore();
 
@@ -134,15 +131,13 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
                         }
 
                     }
+                    //Valido si se guardaron los datos en SQLLite
                     if (estado.equals("S")) {
                         toast("Datos Guardados");
                     } else {
                         toast("nO SE GAURDARON Guardados");
                     }
 
-
-//                    MovieModelClassDS movi = new MovieModelClassDS();
-//                    movi.createPelicula(model);
                 }
 
             } catch (JSONException e) {
@@ -153,6 +148,7 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
         }
     }
 
+    //Carga del Adaptador
     private void PutDataIntoRecyclerView(List<MovieModelClass> movieList) {
         List<MovieModelClass> listMovieInt = new ArrayList<>();
         //Verifica si hay internet
@@ -161,7 +157,6 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
         } else {
             DbPeliculas dbPeliculas = new DbPeliculas(this);
             listMovieInt = dbPeliculas.mostrarPeliculas();
-
         }
         AdapterMovie adapterMovie = new AdapterMovie(this, listMovieInt, iverDetalle);
         peliculasPopulares.setLayoutManager(new LinearLayoutManager(this));
@@ -169,14 +164,15 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
     }
 
 
+    //Contructor del menu lateral
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_principal, menu);
         return true;
     }
 
+    //Items del menu lateral
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

@@ -1,43 +1,21 @@
 package com.example.examenandroid;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.examenandroid.Controllador.ControllerDetallePelicula;
 import com.example.examenandroid.Controllador.ControllerPeliculas;
 import com.example.examenandroid.Controllador.ControllerPrincipal;
-import com.example.examenandroid.Database._DBHelper;
 import com.example.examenandroid.Globales.GlobalController;
 import com.example.examenandroid.Interfaces.IverDetalles;
 import com.example.examenandroid.Model.MovieModelClass;
-import com.example.examenandroid.Model.MovieModelClassDS;
-import com.example.examenandroid.Utils.Utils;
-import com.example.examenandroid.adaptadores.AdapterMovie;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
