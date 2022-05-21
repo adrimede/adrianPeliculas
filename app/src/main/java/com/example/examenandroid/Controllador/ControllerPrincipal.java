@@ -22,9 +22,7 @@ import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,12 +32,13 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
     Button btn_Peliculas;
     Button btn_Firebase;
     Button btn_BaseDatos;
+    Button btn_fotos;
     private FusedLocationProviderClient mFusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+        setContentView(R.layout.activity_principal_layout);
 
         iniComponents();
         iniEvent();
@@ -50,12 +49,14 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
         btn_Peliculas = findViewById(R.id.btn_Peliculas);
         btn_Firebase = findViewById(R.id.btn_Firebase);
         btn_BaseDatos = findViewById(R.id.btn_BaseDatos);
+        btn_fotos = findViewById(R.id.btn_fotos);
     }
 
     private void iniEvent() {
         btn_Peliculas.setOnClickListener(this);
         btn_Firebase.setOnClickListener(this);
         btn_BaseDatos.setOnClickListener(this);
+        btn_fotos.setOnClickListener(this);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
@@ -99,6 +100,9 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
             case R.id.btn_Firebase:
                 //   goToGeolocalizacion();
                 GuardarUbicacion();
+                break;
+            case R.id.btn_fotos:
+                goToCamara();
                 break;
 
         }

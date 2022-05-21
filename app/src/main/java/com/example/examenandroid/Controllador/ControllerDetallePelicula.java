@@ -11,12 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.bumptech.glide.Glide;
 import com.example.examenandroid.Globales.GlobalController;
 import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.Model.MovieModelClass;
 import com.example.examenandroid.R;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 public class ControllerDetallePelicula extends MainActivity {
@@ -30,7 +28,7 @@ public class ControllerDetallePelicula extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_pelicula);
+        setContentView(R.layout.activity_detalle_pelicula_layout);
 //        if (getIntent().getSerializableExtra("movieSlector") != null) {
 //            moviePel = (MovieModelClass) getIntent().getExtras().get("movieSlector");
 //        }

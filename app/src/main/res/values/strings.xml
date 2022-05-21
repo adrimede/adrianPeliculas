@@ -5,5 +5,8 @@
     <string name="tituloHome">Examen android</string>
     <string name="btn_Peliculas">Peliculas API</string>
     <string name="btn_Firestore">Acitvar Guardado de Ubicaciòn</string>
+    <string name="btn_Fotos">Enviar fotos</string>
     <string name="btn_BD">Crear Base de Datos</string>
+    <string name="btn_Camara">Camara</string>
+    <string name="btn_Galeria">Galeria</string>
 </resources>

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.examenandroid.Controllador.ControllerDetallePelicula;
+import com.example.examenandroid.Controllador.ControllerFotos;
 import com.example.examenandroid.Controllador.ControllerPeliculas;
 import com.example.examenandroid.Controllador.ControllerPrincipal;
 import com.example.examenandroid.Globales.GlobalController;
@@ -84,6 +85,15 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
         startActivity(intent);
 
     }
+
+    //LLeva al controlador correspondiente
+    protected void goToCamara() {
+        Intent intent = new Intent(this,
+                ControllerFotos.class);
+        startActivity(intent);
+
+    }
+
 //    //LLeva al controlador correspondiente
 //    protected void goToGeolocalizacion() {
 //        Intent intent = new Intent(this,
