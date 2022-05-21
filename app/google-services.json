@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "459337674377",
+    "project_id": "prubaandroid-b6c3a",
+    "storage_bucket": "prubaandroid-b6c3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459337674377:android:dee5af9cff7f152a052058",
+        "android_client_info": {
+          "package_name": "com.example.examenandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459337674377-r4kvqm49d8ftv2m77ovtat2okjf99s2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiL6wG9ricOdRDvls9HhG4Rloe8i7jjlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459337674377-r4kvqm49d8ftv2m77ovtat2okjf99s2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
