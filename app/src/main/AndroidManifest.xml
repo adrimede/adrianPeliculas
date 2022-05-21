@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenAndroid">
-        <activity android:name=".Controllador.ControllerDetallePelicula" android:screenOrientation="portrait" android:hardwareAccelerated="false"/>
+       <activity android:name=".Controllador.ControllerDetallePelicula" android:screenOrientation="portrait" android:hardwareAccelerated="false"/>
+        <activity android:name=".Controllador.ControllerPeliculas" android:screenOrientation="portrait" android:hardwareAccelerated="false"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Controllador.ControllerPrincipal"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

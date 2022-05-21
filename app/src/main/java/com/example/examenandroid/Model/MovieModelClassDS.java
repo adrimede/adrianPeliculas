@@ -27,9 +27,6 @@ public class MovieModelClassDS {
         dbHelper = new _DBHelper(cont);
     }
 
-    public void open() throws SQLException {
-        database = dbHelper.getWritableDatabase();
-    }
 
     private void openW() throws SQLException {
         database = dbHelper.getWritableDatabase();

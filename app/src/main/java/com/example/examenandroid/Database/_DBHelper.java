@@ -22,7 +22,7 @@ public class _DBHelper extends SQLiteOpenHelper {
     }
 
     // Tabla Pelicula
-    private static final String CREATE_Peliculas = "CREATE TABLE Pelicula (" +
+    public static final String CREATE_Peliculas = "CREATE TABLE Pelicula (" +
             "PeliculaId INTEGER NOT NULL, " +
             "PeliculaNom TEXT NOT NULL, " +
             "PeliculaImg TEXT NOT NULL, " +
