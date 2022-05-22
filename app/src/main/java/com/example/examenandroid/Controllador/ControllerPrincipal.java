@@ -98,7 +98,6 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
                 generarBaseDeDatos();
                 break;
             case R.id.btn_Firebase:
-                //   goToGeolocalizacion();
                 GuardarUbicacion();
                 break;
             case R.id.btn_fotos:
@@ -139,7 +138,7 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
 
             return;
         }
-        //Obteniendo la ubicacion
+//Obteniendo la ubicacion
         mFusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
@@ -162,7 +161,7 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
 
     }
 
-    //Genera la abse de Datos
+//Genera la abse de Datos
     public void generarBaseDeDatos() {
         _DBHelper dbHelper = new _DBHelper(ControllerPrincipal.this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();

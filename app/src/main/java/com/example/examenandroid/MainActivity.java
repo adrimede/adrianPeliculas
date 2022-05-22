@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
     //Link de API peliculas populares
     public static String JSON_URL = "https://api.themoviedb.org/3/movie/popular?api_key=7abda88ea13e3fb5e0151f00800b753d";
     private static String ultima_sincronizacion;
-    //  FirebaseApp.initializeApp();
-    public static FirebaseFirestore mfirestore=FirebaseFirestore.getInstance();
+    public static FirebaseFirestore mfirestore = FirebaseFirestore.getInstance();
 
 
     @Override
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
 
         iniComponent();
         EventComponent();
+
     }
 
 
@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
     public void IrVerDetalles(MovieModelClass mov) {
         goToDetalles(mov);
     }
+
     //Pongo titulo a la vista
     @Override
     public void onResume() {
@@ -117,8 +118,8 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
 
     }
 
-    public void toast(String msj){
-        Toast.makeText(this,msj,Toast.LENGTH_LONG).show();
+    public void toast(String msj) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
 
     }
 

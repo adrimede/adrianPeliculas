@@ -41,7 +41,6 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
     ImageView imgCabezal;
     IverDetalles iverDetalle;
     String estado;
-    // private FirebaseFirestore db=new FirebaseFirestore();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

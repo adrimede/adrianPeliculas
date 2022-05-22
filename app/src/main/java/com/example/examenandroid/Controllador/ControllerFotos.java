@@ -10,12 +10,16 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,22 +32,21 @@ import com.example.examenandroid.Utils.Utils;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class ControllerFotos extends MainActivity implements View.OnClickListener {
 
     Button btnCamera, btn_Galeria, btnSubmit;
     ImageView ivImage;
-    private Bitmap bitmap, bitmapRotate;
-    private String newFileName = "";
-    String imagepath = "";
-    Uri imageUri;
     public static int CAMERA_CODE = 101;
     public static int GALERIA_CODE = 10;
     Context context;
     int calidadImagen = 50;
-    File file;
     ConstraintLayout ly_empty;
+    String imagenElegida = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,10 +80,10 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
         super.onResume();
         ActionBar actionBar = this.getSupportActionBar();
         actionBar.setTitle(R.string.ly_fotoTitulo);
-        if(ivImage.getDrawable() == null){
+        if (ivImage.getDrawable() == null) {
             ly_empty.setVisibility(View.VISIBLE);
             ivImage.setVisibility(View.GONE);
-        }else{
+        } else {
             ly_empty.setVisibility(View.GONE);
             ivImage.setVisibility(View.VISIBLE);
         }
@@ -97,24 +100,41 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
                 abrirGleria();
                 break;
             case R.id.btnSubmit:
+                guardarFotoFirestore();
                 break;
         }
     }
 
-    private void abrirGleria() {
-        Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/");
-    //    startActivityForResult(intent.createChooser(intent, "Seleccione la aplicacion"), GALERIA_CODE);
-      startActivityForResult(intent, GALERIA_CODE);
+//Envio la foto a Firestore
+    private void guardarFotoFirestore() {
+
+        if (!imagenElegida.equals("")) {
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("UrlFoto", imagenElegida);
+
+            mfirestore.collection("Fotos").document().set(map);
+
+            toast("Foto guardada correctamente :" + imagenElegida);
+        }else {
+            toast("Error al guardar foto" );
+        }
     }
 
-    //Abrir camara
+//Abrir galeria
+    private void abrirGleria() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent, GALERIA_CODE);
+    }
+
+//Abrir camara
     public void abrircamara() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA_CODE);
     }
 
-    //Mostrar camara
+//Mostrar camara
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -128,20 +148,50 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            File loaclPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            String root = loaclPath.getPath();
+            imagenElegida = root+"/"+(System.currentTimeMillis() / 100) + ".jpg";
+            //Seteo la foto al ImageView
             ivImage.setImageBitmap(imgBitmap);
-        }else  if (requestCode == GALERIA_CODE && resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-//            Bitmap imgBitmap = (Bitmap) extras.get("data");
-//           // ivImage.setImageBitmap(imgBitmap);
-//            File loaclPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-//            String root = loaclPath.getAbsolutePath();
-//            //  Uri myUri = (Uri.parse(root + "/" + alArchivo.get(position).getArchNomFile()));
-//            Uri myUri = (Uri.parse(root + "/" + imgBitmap));
-//            ivImage.setImageTintList(null);
-            Uri myUri=data.getData();
+
+        } else if (requestCode == GALERIA_CODE && resultCode == RESULT_OK) {
+            File loaclPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            String root = loaclPath.getPath();
+            imagenElegida = root+"/" +(System.currentTimeMillis() / 100) + ".jpg";
+            Uri myUri = data.getData();
+            //Seteo la foto al ImageView
             ivImage.setImageURI(myUri);
         }
     }
 
+    //Contructor del menu lateral
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_principal, menu);
+        return true;
+    }
 
+    //Items del menu lateral
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_Home:
+                goToPrincipal();
+                return true;
+
+            case R.id.menu_Peliculas:
+                goToPeliculasPopulares();
+                return true;
+            case R.id.menu_Fotos:
+                goToCamara();
+                return true;
+
+            case R.id.Firestore:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 }

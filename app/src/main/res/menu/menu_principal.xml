@@ -14,4 +14,8 @@
         android:id="@+id/Firestore"
         android:title="Firestore"
         />
+    <item
+        android:id="@+id/menu_Fotos"
+        android:title="Fotos"
+        />
 </menu>
