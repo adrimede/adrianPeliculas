@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="260dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card_actividad">
+
+    <RelativeLayout
+        android:id="@+id/relativeTexto"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <TextView
+            android:id="@+id/titulo_alert_dialog_bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:text="Errefesjnkjnkfeesfr"
+            android:textColor="@color/Black"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeTexto2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeTexto"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/titulo_alert_dialog_bio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+
+            android:gravity="center_horizontal"
+            android:text="TEXTO"
+
+            android:textColor="@color/Black"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/separator1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/relativeTexto2"
+        android:background="@color/background" />
+
+    <Button
+        android:id="@+id/button_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/separator1"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="7dp"
+        android:backgroundTint="@color/white"
+        android:gravity="center_horizontal"
+        android:paddingTop="15dp"
+        android:stateListAnimator="@null"
+
+        android:text=""
+        android:textColor="#1A73E8" />
+
+</RelativeLayout>

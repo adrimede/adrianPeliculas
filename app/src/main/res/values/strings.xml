@@ -1,14 +1,40 @@
 <resources>
+    <!-- General -->
     <string name="app_name">ExamenAndroid</string>
     <string name="movie_clase">claseMovie</string>
     <string name="tituloPeliuclas">Peliculas mas populares</string>
     <string name="tituloHome">Examen android</string>
+    <string name="tituloMapa">Mapa</string>
+    <string name="ly_fotoTitulo">Fotos</string>
+    <string name="title_activity_controller_map">ControllerMap</string>
+    <string name="title_activity_controller_maps">ControllerMapsActivity</string>
+
+    <!-- Botones -->
     <string name="btn_Peliculas">Peliculas API</string>
     <string name="btn_Firestore">Acitvar Guardado de Ubicaciòn</string>
     <string name="btn_Fotos">Enviar fotos</string>
+    <string name="btn_Mapa">Mostrar ubicaciòn</string>
     <string name="btn_BD">Crear Base de Datos</string>
     <string name="btn_Camara">Camara</string>
     <string name="btn_Galeria">Galeria</string>
+    <string name="btn_Aceptar">Aceptar</string>
 
-    <string name="ly_fotoTitulo">Fotos</string>
+    <!-- Textos -->
+    <string name="txt_ToastubicacionGurdada">Ubicaciòn guardada :</string>
+    <string name="txt_baseDatosCreada">Base de datos creada</string>
+    <string name="txt_baseDatosCreadaSub">La base de datos se creo correctamente</string>
+    <string name="txt_ubicacionGurdada">Ubicaciòn iniciada</string>
+    <string name="txt_ubicacionGurdadaSub">La ubicacion del dispositivo se guardara cada 30 segundos</string>
+    <string name="txt_fotoGurdada">Foto guardada</string>
+    <string name="txt_fotoGurdadaSub">La foto </string>
+    <string name="txt_fotoGurdadaSub2">se guardo correctamente</string>
+    <string name="txt_fotoVacia">Foto vacia</string>
+    <string name="txt_fotoVaciaSub">Debe ingresar una foto para poder guardarla en Firestore</string>
+    <string name="txt_Error">Error</string>
+    <string name="txt_ErrorBaseDatos">Error al crear la Base de datos</string>
+    <string name="txt_DatosNEncontrados">No se encontraron datos</string>
+    <string name="txt_DatosGuardados"> Datos Guardados</string>
+    <string name="txt_DatosGuardadosError"> Error al guardar datos</string>
+
+
 </resources>

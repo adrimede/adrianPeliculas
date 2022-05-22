@@ -132,9 +132,9 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
                     }
                     //Valido si se guardaron los datos en SQLLite
                     if (estado.equals("S")) {
-                        toast("Datos Guardados");
+                        toast(getString(R.string.txt_DatosGuardados));
                     } else {
-                        toast("No se Guardaron Guardados");
+                        toast(getString(R.string.txt_DatosGuardadosError));
                     }
 
                 }

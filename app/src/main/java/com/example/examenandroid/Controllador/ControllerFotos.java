@@ -25,6 +25,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.examenandroid.Globales.PopUpGenericoSimple;
+import com.example.examenandroid.Globales.TipoTransaccionEnum;
 import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.R;
 import com.example.examenandroid.Utils.Utils;
@@ -111,10 +113,12 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
             map.put("UrlFoto", imagenElegida);
 
             mfirestore.collection("Fotos").document().set(map);
-
-            toast("Foto guardada correctamente :" + imagenElegida);
+            PopUpGenericoSimple pop = new PopUpGenericoSimple(getString(R.string.txt_fotoGurdada), getString(R.string.txt_fotoGurdadaSub)+" "+imagenElegida+" "+getString(R.string.txt_fotoGurdadaSub2), getString(R.string.btn_Aceptar), this, TipoTransaccionEnum.DEFAULT);
+            pop.show();
         }else {
-            toast("Error al guardar foto" );
+            PopUpGenericoSimple pop = new PopUpGenericoSimple(getString(R.string.txt_fotoVacia), getString(R.string.txt_fotoVaciaSub), getString(R.string.btn_Aceptar), this, TipoTransaccionEnum.DEFAULT);
+            pop.show();
+
         }
     }
 

@@ -29,9 +29,7 @@ public class ControllerDetallePelicula extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_pelicula_layout);
-//        if (getIntent().getSerializableExtra("movieSlector") != null) {
-//            moviePel = (MovieModelClass) getIntent().getExtras().get("movieSlector");
-//        }
+
         iniComponents();
         eventComponent();
     }

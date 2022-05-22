@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ExamenAndroid/app/src/main/res/drawable-v24/shape_rectangulo_gris_borde.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ExamenAndroid/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ExamenAndroid/app/src/main/res/layout/movie_item_laoyut.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/drawable/bg_card_actividad.xml" value="0.14479166666666668" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/drawable/shape_rectangulo_gris_alrves_borde.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/drawable/shape_rectangulo_gris_alrves_borde2.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/drawable/shape_rectangulo_gris_borde_volteado.xml" value="0.1328125" />
@@ -14,11 +15,14 @@
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/drawable/shapesquareverdepastel.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_base.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_detalle_pelicula.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_detalle_pelicula_layout.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_fotos_layout.xml" value="0.176" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_main.xml" value="0.12239583333333333" />
+        <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_mapa_layout.xml" value="0.11666666666666667" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_peliculas_controller.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_principal.xml" value="0.2" />
-        <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_principal_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/activity_principal_layout.xml" value="0.264" />
+        <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/mensaje_genericos_pop.xml" value="0.176" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/layout/movie_item_laoyut.xml" value="0.11927083333333334" />
         <entry key="..\:/Users/Usuario/OneDrive/Documentos/adrianPeliculas/app/src/main/res/menu/menu_principal.xml" value="0.4" />
       </map>

@@ -6,9 +6,10 @@ public class MovieModelClass {
     String peliculaNom;
     String peliculaImg;
     String peliculaDesc;
-    public MovieModelClass(String peliculaId,String peliculaNumero, String name, String img,String PeliculaDesc) {
+
+    public MovieModelClass(String peliculaId, String peliculaNumero, String name, String img, String PeliculaDesc) {
         this.peliculaId = peliculaId;
-        this.peliculaNumero=peliculaNumero;
+        this.peliculaNumero = peliculaNumero;
         this.peliculaNom = name;
         this.peliculaImg = img;
         this.peliculaDesc = PeliculaDesc;
