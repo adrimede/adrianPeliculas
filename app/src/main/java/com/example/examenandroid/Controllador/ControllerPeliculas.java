@@ -135,7 +135,7 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
                     if (estado.equals("S")) {
                         toast("Datos Guardados");
                     } else {
-                        toast("nO SE GAURDARON Guardados");
+                        toast("No se Guardaron Guardados");
                     }
 
                 }

@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/camara"
+        android:id="@+id/ly_camara"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -29,54 +29,38 @@
 
 
     <LinearLayout
-        android:id="@+id/enviarfoto"
+        android:id="@+id/ly_galeria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/camara"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_below="@+id/ly_camara"
+
+        android:orientation="vertical"
         android:padding="5dp">
 
         <Button
-            android:id="@+id/btn_btnGaleria"
+            android:id="@+id/btn_Galeria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_weight="1"
             android:background="@drawable/shapesquareblue"
-            android:paddingLeft="10dp"
             android:text="@string/btn_Galeria"
             android:elevation="20dp"
-            android:textColor="@color/White"
-            android:visibility="visible" />
+            android:textColor="@color/White" />
 
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="6"
-            android:background="@drawable/shapesquareblue"
-            android:drawableRight="@android:drawable/ic_menu_save"
-            android:elevation="20dp"
-            android:paddingRight="10dp"
-            android:textColor="@color/White"
-            android:visibility="visible" />
 
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/imagen"
+        android:id="@+id/rl_imagen"
         android:layout_width="match_parent"
         android:layout_height="444dp"
-        android:layout_below="@+id/enviarfoto"
+        android:layout_below="@+id/ly_galeria"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/shape_rectangulo_gris_alrves_borde2"
         android:gravity="center"
         android:orientation="horizontal"
@@ -94,7 +78,7 @@
             android:rotation="90" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fr_empty"
+            android:id="@+id/ly_empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone">
@@ -127,15 +111,37 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fc_listaImagenes"
+    <LinearLayout
+        android:id="@+id/ly_enviarfoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_imagen"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-        android:layout_below="@+id/enviarfoto"
-        android:layout_alignParentBottom="false"
-        android:visibility="gone" />
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/shapesquareblue"
+            android:drawableLeft="@android:drawable/ic_menu_save"
+            android:elevation="20dp"
+            android:paddingRight="10dp"
+            android:text="Guardar Firestore"
+            android:textColor="@color/White" />
+
+    </LinearLayout>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/fc_listaImagenes"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        android:layout_below="@+id/enviarfoto"-->
+<!--        android:layout_alignParentBottom="false"-->
+<!--        android:visibility="gone" />-->
 
 
 </RelativeLayout>

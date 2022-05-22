@@ -9,4 +9,6 @@
     <string name="btn_BD">Crear Base de Datos</string>
     <string name="btn_Camara">Camara</string>
     <string name="btn_Galeria">Galeria</string>
+
+    <string name="ly_fotoTitulo">Fotos</string>
 </resources>

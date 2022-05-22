@@ -13,9 +13,13 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.examenandroid.MainActivity;
 import com.example.examenandroid.R;
@@ -28,7 +32,7 @@ import java.util.Random;
 
 public class ControllerFotos extends MainActivity implements View.OnClickListener {
 
-    Button btnCamera, btn_btnGaleria, btnSubmit;
+    Button btnCamera, btn_Galeria, btnSubmit;
     ImageView ivImage;
     private Bitmap bitmap, bitmapRotate;
     private String newFileName = "";
@@ -39,7 +43,7 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
     Context context;
     int calidadImagen = 50;
     File file;
-
+    ConstraintLayout ly_empty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,17 +56,34 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
     private void iniComponents() {
         //Botones
         btnCamera = findViewById(R.id.btnCamera);
-        btn_btnGaleria = findViewById(R.id.btn_btnGaleria);
+        btn_Galeria = findViewById(R.id.btn_Galeria);
         btnSubmit = findViewById(R.id.btnSubmit);
         //Imagenes
         ivImage = findViewById(R.id.ivImage);
+        //LinearLayout
+        ly_empty = findViewById(R.id.ly_empty);
     }
 
     private void iniEvenets() {
         btnCamera.setOnClickListener(this);
-        btn_btnGaleria.setOnClickListener(this);
+        btn_Galeria.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
 
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ActionBar actionBar = this.getSupportActionBar();
+        actionBar.setTitle(R.string.ly_fotoTitulo);
+        if(ivImage.getDrawable() == null){
+            ly_empty.setVisibility(View.VISIBLE);
+            ivImage.setVisibility(View.GONE);
+        }else{
+            ly_empty.setVisibility(View.GONE);
+            ivImage.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -72,7 +93,7 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
             case R.id.btnCamera:
                 abrircamara();
                 break;
-            case R.id.btn_btnGaleria:
+            case R.id.btn_Galeria:
                 abrirGleria();
                 break;
             case R.id.btnSubmit:
@@ -81,9 +102,10 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
     }
 
     private void abrirGleria() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/");
-        startActivityForResult(intent, GALERIA_CODE);
+    //    startActivityForResult(intent.createChooser(intent, "Seleccione la aplicacion"), GALERIA_CODE);
+      startActivityForResult(intent, GALERIA_CODE);
     }
 
     //Abrir camara
@@ -108,9 +130,16 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
             }
             ivImage.setImageBitmap(imgBitmap);
         }else  if (requestCode == GALERIA_CODE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imgBitmap = (Bitmap) extras.get("data");
-            ivImage.setImageBitmap(imgBitmap);
+//            Bundle extras = data.getExtras();
+//            Bitmap imgBitmap = (Bitmap) extras.get("data");
+//           // ivImage.setImageBitmap(imgBitmap);
+//            File loaclPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+//            String root = loaclPath.getAbsolutePath();
+//            //  Uri myUri = (Uri.parse(root + "/" + alArchivo.get(position).getArchNomFile()));
+//            Uri myUri = (Uri.parse(root + "/" + imgBitmap));
+//            ivImage.setImageTintList(null);
+            Uri myUri=data.getData();
+            ivImage.setImageURI(myUri);
         }
     }
 
