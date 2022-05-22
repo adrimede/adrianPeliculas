@@ -106,7 +106,8 @@ public class ControllerMapsActivity extends MainActivity implements OnMapReadyCa
             case R.id.menu_Fotos:
                 goToCamara();
                 return true;
-            case R.id.menu_Firestore:
+            case R.id.menu_Mapa:
+                goToMapa();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

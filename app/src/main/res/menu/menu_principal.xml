@@ -10,12 +10,15 @@
         android:id="@+id/menu_Peliculas"
         android:title="Peliculas API"
         />
-    <item
-        android:id="@+id/menu_Firestore"
-        android:title="Firestore"
-        />
+
     <item
         android:id="@+id/menu_Fotos"
         android:title="Fotos"
         />
+
+    <item
+        android:id="@+id/menu_Mapa"
+        android:title="Mapa"
+        />
+
 </menu>

@@ -83,10 +83,11 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
             case R.id.menu_Peliculas:
                 goToPeliculasPopulares();
                 return true;
-            case R.id.menu_Firestore:
-                return true;
             case R.id.menu_Fotos:
                 goToCamara();
+                return true;
+            case R.id.menu_Mapa:
+                goToMapa();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

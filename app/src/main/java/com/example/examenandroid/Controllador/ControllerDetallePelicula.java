@@ -23,7 +23,6 @@ public class ControllerDetallePelicula extends MainActivity {
     TextView peliculaNomb;
     TextView peliculaDesc;
     MovieModelClass moviePel;
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +46,7 @@ public class ControllerDetallePelicula extends MainActivity {
 //                .load(moviePel.getPeliculaImg())
 //                .error(R.mipmap.not_found_144)
 //                .into(imgCabezal);
-     //   String URl="https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2019%2F10%2F19%2F11%2F32%2Ffungus-4561194__340.jpg&imgrefurl=https%3A%2F%2Fpixabay.com%2Fes%2Fphotos%2Fsearch%2Fcinem%25C3%25A1ticas%2F&tbnid=dB_kdYk2OlwiAM&vet=12ahUKEwi8qee1ze73AhU_s5UCHcl9B00QMygGegUIARDHAQ..i&docid=d0iZ9q9yxm-GoM&w=226&h=340&itg=1&q=fotos%20cinematicas&ved=2ahUKEwi8qee1ze73AhU_s5UCHcl9B00QMygGegUIARDHAQ";
-        Uri uri= Uri.parse("https://api.themoviedb.org"+moviePel.getPeliculaImg());
+       Uri uri= Uri.parse("https://api.themoviedb.org"+moviePel.getPeliculaImg());
         Picasso.get()
                 .load(R.drawable.cabezal_movie)
                 .fit().into(imgCabezal);
@@ -64,12 +62,14 @@ public class ControllerDetallePelicula extends MainActivity {
             case R.id.menu_Home:
                 goToPrincipal();
                 return true;
-
             case R.id.menu_Peliculas:
                 goToPeliculasPopulares();
                 return true;
-
-            case R.id.menu_Firestore:
+            case R.id.menu_Fotos:
+                goToCamara();
+                return true;
+            case R.id.menu_Mapa:
+                goToMapa();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
