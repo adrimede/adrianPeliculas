@@ -58,13 +58,7 @@ public class ControllerDetallePelicula extends MainActivity {
         peliculaDesc.setText(moviePel.getPeliculaDesc());
 
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_principal,menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -77,7 +71,7 @@ public class ControllerDetallePelicula extends MainActivity {
                 goToPeliculasPopulares();
                 return true;
 
-            case R.id.Firestore:
+            case R.id.menu_Firestore:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

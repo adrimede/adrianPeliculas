@@ -163,13 +163,6 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
     }
 
 
-    //Contructor del menu lateral
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_principal, menu);
-        return true;
-    }
 
     //Items del menu lateral
     @Override
@@ -183,7 +176,10 @@ public class ControllerPeliculas extends MainActivity implements IverDetalles {
                 goToPeliculasPopulares();
                 return true;
 
-            case R.id.Firestore:
+            case R.id.menu_Firestore:
+                return true;
+            case R.id.menu_Fotos:
+                goToCamara();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

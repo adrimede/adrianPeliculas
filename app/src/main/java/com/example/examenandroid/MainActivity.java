@@ -10,6 +10,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -56,7 +58,14 @@ public class MainActivity extends AppCompatActivity implements IverDetalles {
     public static void setUltima_Sincronizacion(String ultima_sincronizacion) {
         MainActivity.ultima_sincronizacion = ultima_sincronizacion;
     }
+    //Creaciòn del menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_principal, menu);
+        return true;
+    }
     public static void truncate() {
         ultima_sincronizacion = null;
     }

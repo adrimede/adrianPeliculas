@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/menu_Home"
-        android:title="Home"
+        android:title="Inicio"
         />
     <item
         android:id="@+id/menu_Peliculas"
         android:title="Peliculas API"
         />
     <item
-        android:id="@+id/Firestore"
+        android:id="@+id/menu_Firestore"
         android:title="Firestore"
         />
     <item

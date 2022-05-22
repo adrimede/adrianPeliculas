@@ -71,8 +71,6 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
         btnCamera.setOnClickListener(this);
         btn_Galeria.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
-
-
     }
 
     @Override
@@ -87,7 +85,6 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
             ly_empty.setVisibility(View.GONE);
             ivImage.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override
@@ -164,13 +161,7 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
         }
     }
 
-    //Contructor del menu lateral
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_principal, menu);
-        return true;
-    }
+
 
     //Items del menu lateral
     @Override
@@ -186,8 +177,7 @@ public class ControllerFotos extends MainActivity implements View.OnClickListene
             case R.id.menu_Fotos:
                 goToCamara();
                 return true;
-
-            case R.id.Firestore:
+            case R.id.menu_Firestore:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

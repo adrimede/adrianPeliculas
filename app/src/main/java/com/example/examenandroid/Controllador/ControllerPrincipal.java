@@ -60,13 +60,7 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_principal, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -78,8 +72,10 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
             case R.id.menu_Peliculas:
                 goToPeliculasPopulares();
                 return true;
-
-            case R.id.Firestore:
+            case R.id.menu_Firestore:
+                return true;
+            case R.id.menu_Fotos:
+                goToCamara();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -150,11 +146,8 @@ public class ControllerPrincipal extends MainActivity implements View.OnClickLis
                             Map<String,Object> map=new HashMap<>();
                             map.put("latitud",latitude);
                             map.put("longitud",longitud);
-                            //   mfirestore.collection("Ubicacion").document().set(map);
                             mfirestore.collection("Ubicacion").document().set(map);
-
                             toast("Ubicaciòn guardada :"+latitude+" "+longitud);
-
                         }
                     }
                 });
